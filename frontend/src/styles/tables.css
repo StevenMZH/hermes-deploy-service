@@ -151,3 +151,21 @@
 .off {
     background-color: #d36985;
 }
+
+
+@media (max-width: 768px) {
+  div .table {
+    font-size: 9px;
+  }
+  div .table td {
+    padding: 12px 6px;
+  }
+  div .searchbar .searchbar-input{
+    font-size: 13px;
+    padding: 6px 12px;
+    height: 35px;
+  }
+  div .searchbar-add{
+    font-size: 11px;
+  }
+}

@@ -13,11 +13,13 @@ export function Header() {
                     <p className="h1-sec">S E R V I C E S</p>            
                 </div>
             </div>
-            <div className="full-w row-right gap10">
-                <LanguageSelector />
-                <ThemeSwitch />
-                <div className="user-image-container">
-                    <img src="./global/user.svg" alt="user" />
+            <div className="full-w row-right">
+                <div className="flex-center gap10">
+                    <LanguageSelector />
+                    <ThemeSwitch />
+                    <div className="user-image-container">
+                        <img src="./global/user.svg" alt="user" />
+                    </div>
                 </div>
             </div>
         </>

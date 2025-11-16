@@ -52,6 +52,10 @@ i18n
           addImage: "Add Image",
           addRepo: "Add Repository",
           createApp: "Create App",
+
+          emptyTableMessage: "No data added yet",
+          noResultMessage: "No results match your search"
+
         },
       },
       es: {
@@ -100,6 +104,9 @@ i18n
           addImage: "Agregar Imagen",
           addRepo: "Agregar Repositorio",
           createApp: "Crear Aplicación",
+
+          emptyTableMessage: "Aún no se han agregado datos",
+          noResultMessage: "No hay resultados que coincidan con la búsqueda"
         },
       },
     },

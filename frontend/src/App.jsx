@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import { useAppState } from "./context/AppStateContext";
 import { useMediaQuery } from "react-responsive";
 import { routes } from "./routes";
@@ -10,6 +10,7 @@ import AuthLayout from "./widgets/layouts/AuthLayout";
 
 import Signup from "./widgets/pages/Signup";
 import Login from "./widgets/pages/Login";
+import BottombarLayout from "./widgets/layouts/BottomBarLayout";
 
 const Servers = lazy(() => import("./widgets/pages/logged/Servers"));
 const Images = lazy(() => import("./widgets/pages/logged/Images"));
@@ -30,8 +31,6 @@ export function RouteGroup({ paths, element, fallback = <div></div> }) {
     setForm("none");
   }, [location, setForm]);
 
-  const Layout = MainLayout;
-
   return (
     <>
       {paths.map((path) => (
@@ -46,8 +45,20 @@ export function RouteGroup({ paths, element, fallback = <div></div> }) {
 }
 
 function App() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // ejemplo: móvil si ancho <= 768px
+    };
+    
+    handleResize(); // chequear al montar
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+  const Layout = isMobile ? MobileLayout : MainLayout;
+
   // const isMobile = useMediaQuery({ maxWidth: 768 });
-  const Layout = MainLayout;
 
   return (
     <Routes>

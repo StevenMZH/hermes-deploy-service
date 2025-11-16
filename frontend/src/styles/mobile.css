@@ -9,4 +9,14 @@
         height: 27px;
     }
 
+    #root div:has(.page-container){
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 100vw;
+    }
+    #root .page-container{
+        padding-left: 0px;
+        gap: 0px;
+    }
 }

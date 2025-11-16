@@ -94,3 +94,18 @@
   filter: invert(0.9);
   z-index: 1;
 }
+
+@media (max-width: 768px) {
+  body .theme-switch-wrapper .switch {
+    height: 1.8em;
+  }
+  body .theme-switch-wrapper .cloud {
+    bottom: -1.4em;
+  }
+  body .theme-switch-wrapper .switch input + .slider:before {
+    bottom: 0.4em;
+  }
+  body .theme-switch-wrapper .switch input:checked + .slider:before {
+    bottom: 0.4em;
+  }
+}

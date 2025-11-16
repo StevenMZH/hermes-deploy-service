@@ -72,3 +72,71 @@
     font-size: 14px;
     font-weight: 400;
 }
+
+@media (max-width: 768px) {
+    div .h1 {
+        /* font-size: 32px; */
+        font-weight: 800;   
+        font-size: 14px;
+        color: var(--text-h1);
+    }
+    div .h1-sec {
+        font-size: 9px;
+        font-weight: 900;
+        color: var(--highlight1);
+    }
+
+    div .h2 {
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    div .h3 {
+        font-size: 20px;
+        font-weight: 700;
+        /* color: var(--text-main); */
+    }
+
+    div .h4 {
+        font-size: 16px;
+        font-weight: 700;
+        /* color: var(--text-main); */
+    }
+
+    div .h5 {
+        font-size: 11px;
+        /* color: var(--text-main); */
+    }
+
+    .h6 {
+        font-size: 11px;
+        font-weight: 900;
+        color: var(--text-sec);
+    }
+    .h7 {
+        font-size: 10px;
+        font-weight: 600;
+        /* color: var(--text-main); */
+    }
+
+    .t-body{
+        font-weight: 700;
+        font-size: 20px;
+        color: var(--text-sec);
+    }
+
+    .t-body1  {
+        font-weight: 600;
+        font-size: 14px;
+        color: var(--text-sec);
+    }
+
+    .t-body2 {
+        font-size: 20px;
+    }
+
+    .t-body3 {
+        font-size: 14px;
+        font-weight: 400;
+    }
+}

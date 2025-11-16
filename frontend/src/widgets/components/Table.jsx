@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 
 /**
  * Table genérica con ordenamiento, click por fila y ancho de columnas.
@@ -29,6 +30,7 @@ export default function Table({
   striped = true,
   className = "",
 }) {
+  const { t } = useTranslation();
   const [sortConfig, setSortConfig] = useState(initialSort);
 
   const requestSort = (key, sortable) => {
@@ -77,6 +79,21 @@ export default function Table({
     );
   };
 
+  if (!data.length && sortConfig.key) {
+    return (
+      <div className={`full-view flex-center ${className}`}>
+        <p className="empty-table-message h4">{t("emptyTableMessage")}</p>
+      </div>
+    );
+  }
+  if (!data.length) {
+    return (
+      <div className={`full-view flex-center ${className}`}>
+        <p className="empty-table-message h4">{t("noResultMessage")}</p>
+      </div>
+    );
+  }
+  
   return (
     <div className={`full-view ${className}`}>
       <table className="table">
@@ -107,9 +124,11 @@ export default function Table({
           </tr>
         </thead>
         <tbody>
-          {sortedData.map((row, idx) => {
+          {
+          sortedData.map((row, idx) => {
             const rowKey = getRowKey(row, idx);
             const rowClass = striped && idx % 2 === 0 ? "row-even" : "row-odd";
+          
             return (
               <tr
                 key={rowKey}

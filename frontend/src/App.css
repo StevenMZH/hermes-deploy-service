@@ -142,3 +142,10 @@
 .dark .icon {
     filter: invert(0.9);
 }
+
+
+@media (max-width: 768px) {
+    div .gap20 {
+        gap: 15px;
+    }
+}
