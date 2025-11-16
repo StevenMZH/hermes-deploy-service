@@ -64,11 +64,19 @@ body, main {
     font-size: 14px;
     font-optical-sizing: auto;
 }
-#root, #root > div {
+#root {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    background-color: var(--bg-light);
+} 
+#root > div {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: start;
+    max-height: 97vh;
+    background-color: var(--bg-dark);
 }
 .page-container {
     flex: 1;
@@ -227,7 +235,9 @@ video {
     ::-webkit-scrollbar {
         display:none;
     }
-
+    html body{
+        height: 90vh;
+    }
     html body, body main{
         font-size: 12px;
     } 
