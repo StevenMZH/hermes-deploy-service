@@ -22,7 +22,72 @@ export function AppsPage() {
       repository: "Repo 2",
       image: "Image 2",
     },
+    {
+      name: "App 3",
+      servers: "Server 1",
+      domain: "dashboard.example.com",
+      status: "on",
+      repository: "Repo 3",
+      image: "Image 5",
+    },
+    {
+      name: "Billing Service",
+      servers: "Server 4, Server 5",
+      domain: "billing.example.com",
+      status: "on",
+      repository: "billing-api",
+      image: "billing-image:v2",
+    },
+    {
+      name: "Auth Service",
+      servers: "Server 2",
+      domain: "auth.example.com",
+      status: "off",
+      repository: "auth-service",
+      image: "auth-image:v1.3",
+    },
+    {
+      name: "Notification Worker",
+      servers: "Server 6",
+      domain: "notify.example.com",
+      status: "on",
+      repository: "notify-worker",
+      image: "notify:v4",
+    },
+    {
+      name: "Admin Panel",
+      servers: "Server 7, Server 1",
+      domain: "admin.example.com",
+      status: "on",
+      repository: "admin-panel",
+      image: "admin:v3",
+    },
+    {
+      name: "Analytics",
+      servers: "Server 8",
+      domain: "analytics.example.com",
+      status: "off",
+      repository: "analytics-service",
+      image: "analytics:v1.0",
+    },
+    {
+      name: "E-Commerce API",
+      servers: "Server 3, Server 9",
+      domain: "api.shop.example.com",
+      status: "on",
+      repository: "shop-api",
+      image: "shop-api:v7",
+    },
+    {
+      name: "Frontend Web",
+      servers: "Server 10",
+      domain: "www.example.com",
+      status: "on",
+      repository: "frontend",
+      image: "frontend:v12",
+    },
   ];
+
 
   const [data, setData] = useState(apps);
 
