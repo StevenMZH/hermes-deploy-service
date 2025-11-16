@@ -119,4 +119,4 @@ pylint-report.txt
 pylint-global.txt
 
 
-.env.*
+# .env.*
