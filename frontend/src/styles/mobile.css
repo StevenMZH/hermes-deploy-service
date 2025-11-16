@@ -1,0 +1,12 @@
+
+@media (max-width: 768px) {
+
+    header h1 {
+        font-size: 18px;
+    }
+    header .logo{
+        width: 27px;
+        height: 27px;
+    }
+
+}

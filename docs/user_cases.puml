@@ -1,0 +1,90 @@
+@startuml cases
+left to right direction
+
+title User Cases Diagram - Hosting Service API
+
+actor "Unautheticated" as Unautheticated
+actor "User" as User
+
+' rectangle "Authentication" {
+  
+' }
+
+rectangle "Auth" {
+    usecase "Login" as Login
+    usecase "SignUp" as SignUp
+}
+
+rectangle "Hosting" {
+    rectangle "Servers" {
+        usecase "Ver Servers" as ListServers
+        usecase "Seleccionar Server" as SelectServer
+        usecase "Agregar Server" as AddServer
+        usecase "Asignar Credenciales" as AsignCredentials
+        usecase "Editar Server" as EditServer
+        usecase "Eliminar Server" as DeleteServer
+        usecase "Cambiar estado" as ChangeServerStatus
+        usecase "Acceder a la Terminal" as AccessServer
+    }
+    rectangle "Apps" {
+        usecase "Crear App" as AddApp
+        usecase "Asignar App Data" as AsignData
+        usecase "Asignar Servers" as AsignServer
+        usecase "Agregar Repositorios" as AddRepo
+        usecase "Agregar Imagenes" as AddImage
+
+        usecase "Seleccionar App" as SelectApp
+        usecase "Editar App" as EditApp
+        usecase "Editar Repositorio" as EditRepo
+        usecase "Editar Imagen" as EditImage
+        usecase "Eliminar Repositorio" as DeleteRepo
+        usecase "Eliminar Imagen" as DeleteImage
+        usecase "Desplegar App" as DeployApp
+    }
+    ' usecase "Crear Server" as CreateServer
+}
+
+
+'# User Cases
+Unautheticated --> Login
+Unautheticated --> SignUp
+
+
+' User --> CreateServer
+User --> ListServers
+User --> AddServer
+AddServer --> AsignCredentials
+User --> SelectServer
+SelectServer --> EditServer
+SelectServer --> DeleteServer
+SelectServer --> ChangeServerStatus
+SelectServer --> AccessServer
+
+User --> AddApp
+AddApp --> AsignServer
+AddApp --> AddRepo
+AddApp --> AddImage
+
+User --> SelectApp
+SelectApp --> DeployApp
+SelectApp --> EditApp
+EditApp --> EditRepo
+EditApp --> EditImage
+EditApp --> DeleteRepo
+EditApp --> DeleteImage
+
+' GET owners
+' Admin --> server
+' GET owners/<:id>
+' Admin --> GetOwner
+' POST owners/<:id>
+' Owner --> CreateOwner
+' PUT owners/<:id>
+' Owner --> EditOwner
+' PUT owners/<:id>/archive
+' Owner --> ArchiveOwner
+' DELETE owners/<:id>
+' Owner --> DeleteOwner
+
+
+@enduml

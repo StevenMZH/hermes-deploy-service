@@ -1,0 +1,43 @@
+.pieChart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.pieChart-no-data {
+  font-size: 16px;
+  color: var(--text-sec);
+}
+
+.pieChart-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.pieChart-container .pieChart-legend-left { 
+  padding-top: 10px;
+  display: flex;
+  width: 80%;
+  flex-wrap:nowrap;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start; 
+}
+
+.pieChart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-sec);
+}
+
+.pieChart-legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--text-sec);
+}
+

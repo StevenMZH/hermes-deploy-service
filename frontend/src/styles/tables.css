@@ -1,0 +1,153 @@
+.table {
+  width: 100%;
+  border-spacing: 0;
+    border-radius: 5px;
+  overflow: hidden; 
+}
+
+.table th,
+.table td {
+  /* border: 1px solid #ccc; */
+    padding: 8px;
+    text-align: center;
+    justify-content: center;
+}
+
+.table th {
+  /* background-color: #f5f5f5; */
+  font-weight: bold;
+}
+
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  text-align: left;
+}
+
+.table thead {
+  background-color: var(--highlight1); /* Verde oscuro */
+  color: white;
+}
+
+.table th, 
+.table td {
+  padding: 10px;
+}
+.table tbody tr{
+  color: var(--text-highlight);
+}
+.table tbody tr:hover {
+  background-color: var(--highlight3); /* Verde muy claro al pasar el mouse */
+}
+
+/* Colores alternos en filas */
+.table .row-even {
+  background-color: #f8f9fa; /* gris claro */
+}
+
+.table .row-odd {
+  background-color: var(--highlight2); /* Verde oscuro */
+}
+
+.sort-icon {
+  width: 15px;
+  height: 15px;
+  margin-left: 0px;
+  vertical-align: middle;
+}
+.species-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 0px;
+  vertical-align: middle;
+}
+
+
+/* SearchBar */
+.searchbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.searchbar-select {
+  min-width: 140px;
+  width: 10%;
+}
+
+.searchbar .searchbar-input {
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px;
+  /* border: 2px solid #aaa; */
+  border-radius: 20px;
+  font-size: 14px;
+  box-sizing: border-box;
+  text-align: start;
+  padding-right: 75px; /* deja espacio para el botón */
+}
+
+.searchbar .searchbar-button {
+  position: absolute;   /* <- en vez de fixed */
+  right: 5px;          /* se alinea al borde derecho */
+  top: 50%;             /* centrado vertical */
+  transform: translateY(-50%);
+  /* background-color: var(--highlight1); */
+  color: var(--text-highlight2);
+  border-radius: 100%;
+  font-weight: 500;
+  padding: 8px 10px;
+  margin-top: 0.5px;
+  border: none; /* opcional */
+  cursor: pointer;
+}
+
+.searchbar-filter {
+  display: flex;
+  width: 100px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.searchbar-add {
+  background-color: var(--highlight1);
+  color: var(--text-highlight2);
+  display: flex;
+  width: 90px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.searchbar-add {
+  text-align: center;
+  justify-content: center;
+  align-self: center;
+}
+.searchbar-filter .icon, .searchbar-add .reversed-icon {
+  height: 18px;
+  width: 18px;
+}
+
+
+
+.server-status {
+ width: 10px;
+ height: 10px;
+    border-radius: 100%;   
+}
+
+.on {
+    background-color: #51d29f;
+}
+.off {
+    background-color: #d36985;
+}

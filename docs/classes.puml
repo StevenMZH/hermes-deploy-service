@@ -1,0 +1,64 @@
+@startuml Livestock
+' ---------------- Main Models ----------------
+class User {
+    +id: AutoField
+    +name: CharField
+    +email: CharField
+    +password: hash
+}
+
+class Server {
+    +id: AutoField
+    +user: User
+    
+    +name: CharField
+    +email: CharField
+    +region: CharField
+    +ssh: CharField
+
+    +on: ServerStatus
+}
+
+class App {
+    +id: AutoField
+    +name: CharField
+    +domain: CharField
+    
+    +server: Server
+    
+    +repository: Repository
+    +image: Image
+
+    +
+}
+
+class Image {
+    +id: AutoField
+    +name: CharField
+    +url: CharField
+}
+
+class Repository {
+    +id: AutoField
+    +name: CharField
+    +url: CharField
+    +branch: CharField
+}
+
+class EnvVar{
+    +id: AutoField
+    +name: CharField
+    +value: CharField
+}
+
+
+' ---------------- Relationships ----------------
+User "1" -- "*" Server
+Server "*" -- "*" App
+
+App "1" -- "*" Repository
+App "1" -- "*" Image
+
+Repository "1" -- "*" EnvVar
+
+@enduml
