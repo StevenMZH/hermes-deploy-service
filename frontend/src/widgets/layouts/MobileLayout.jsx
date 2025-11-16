@@ -23,6 +23,7 @@ export default function MobileLayout() {
 
   return (
     <>
+      <BottombarLayout elements={sidebarElements} className=""/>
       <div className='page-container'>
         <header>
           <Header />
@@ -38,10 +39,6 @@ export default function MobileLayout() {
 
         <FormLayout />
       </div>
-      <BottombarLayout
-        elements={sidebarElements}
-        className=""
-      />
     </>
   );
 }

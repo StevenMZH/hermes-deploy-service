@@ -14,7 +14,7 @@ export default function Layout() {
   // Definir los elementos del sidebar usando traducciones y rutas dinámicas
   const sidebarElements = [
     { name: t('servers'), url: routes[lang].servers, icon: '/deploy/servers.svg' },
-    { name: t('imageRegistry'), url: routes[lang].images, icon: '/deploy/docker.svg' },
+    { name: t('image_registry'), url: routes[lang].images, icon: '/deploy/docker.svg' },
     { name: t('repositories'), url: routes[lang].repositories, icon: '/deploy/github.svg' },
     { name: t('apps'), url: routes[lang].apps, icon: '/deploy/servers.svg' },
     { name: t('settings'), url: routes[lang].settings, icon: '/settings.png' },

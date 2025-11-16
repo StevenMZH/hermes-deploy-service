@@ -11,7 +11,7 @@
 
     #root div:has(.page-container){
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
         height: 100vh;
         width: 100vw;
     }
