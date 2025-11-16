@@ -8,7 +8,7 @@ import MainLayout from "./widgets/layouts/MainLayout";
 import MobileLayout from "./widgets/layouts/MobileLayout";
 import AuthLayout from "./widgets/layouts/AuthLayout";
 
-import Signup from "./widgets/pages/signup";
+import Signup from "./widgets/pages/Signup";
 import Login from "./widgets/pages/Login";
 
 const Servers = lazy(() => import("./widgets/pages/logged/Servers"));
