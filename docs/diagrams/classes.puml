@@ -1,4 +1,5 @@
-@startuml Livestock
+
+@startuml Hermes Deployment Services
 ' ---------------- Main Models ----------------
 class User {
     +id: AutoField
@@ -14,9 +15,8 @@ class Server {
     +name: CharField
     +email: CharField
     +region: CharField
-    +ssh: CharField
-
-    +on: ServerStatus
+    +ssh_key: CharField
+    ' +on: ServerStatus
 }
 
 class App {
@@ -24,25 +24,29 @@ class App {
     +name: CharField
     +domain: CharField
     
-    +server: Server
-    
-    +repository: Repository
+    +locations: List<AppLocation>
     +image: Image
+}
 
-    +
+class AppLocation {
+    +id: AutoField
+    +server: Server
+    +port: IntegerField
 }
 
 class Image {
     +id: AutoField
     +name: CharField
     +url: CharField
+    +repository: Repository
+    +branch: CharField
 }
 
 class Repository {
     +id: AutoField
     +name: CharField
     +url: CharField
-    +branch: CharField
+    +enVals: List<EnvVar>
 }
 
 class EnvVar{
@@ -56,8 +60,9 @@ class EnvVar{
 User "1" -- "*" Server
 Server "*" -- "*" App
 
-App "1" -- "*" Repository
-App "1" -- "*" Image
+App "1" -- "1" Image
+App "1" -- "*" AppLocation
+Image "1" -- "1" Repository
 
 Repository "1" -- "*" EnvVar
 

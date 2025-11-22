@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 import uuid
-from registry.models import Owner
 
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
@@ -47,11 +46,11 @@ class Account(models.Model):
     password = models.CharField(max_length=255)
 
     users = models.ManyToManyField(User, related_name='accounts', blank=True)
-    default_owner = models.ForeignKey(
-        Owner, on_delete=models.SET_NULL, null=True, blank=True,
-        related_name='default_for_accounts'
-    )
-    owners = models.ManyToManyField(Owner, related_name='accounts', blank=True)
+    # default_owner = models.ForeignKey(
+    #     Owner, on_delete=models.SET_NULL, null=True, blank=True,
+    #     related_name='default_for_accounts'
+    # )
+    # owners = models.ManyToManyField(Owner, related_name='accounts', blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

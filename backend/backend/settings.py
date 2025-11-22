@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     # 'django.contrib.gis',
     
     'registry', 
-    'user_auth', 
+    # 'user_auth', 
 
 # </INSTALLED_APPS>
 ]
@@ -150,7 +150,7 @@ CLOUDINARY_STORAGE = {
 }
 
 # Account Authentication (OAuth2 & jwt)
-AUTH_USER_MODEL = 'user_auth.User'
+# AUTH_USER_MODEL = 'user_auth.User'
 
 SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
