@@ -25,10 +25,10 @@ export function useXterm(containerRef, enabled = true) {
 
     const terminal = new Terminal({
       fontSize: 13,
-      fontWeight: 400,
+      fontWeight: 500,
       theme: {
         background: "#0000",
-        foreground: "#ccc",
+        foreground: "#999",
       },
     });
 
@@ -42,7 +42,7 @@ export function useXterm(containerRef, enabled = true) {
     const observer = new MutationObserver(() => {
       terminal.setOption("theme", {
         background: "#0000",
-        foreground: "#ccc",
+        foreground: "#aaa",
       });
     });
 
