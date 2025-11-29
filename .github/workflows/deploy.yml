@@ -47,10 +47,10 @@ jobs:
           echo "GOOGLE_CLIENT_SECRET=''" >> .env.prod
           
       - name: Build all images from docker-compose
-        run: docker compose -f docker-compose.yml --env-file .env.dev build
+        run: docker compose -f docker-compose.yml --env-file .env.prod build
 
       - name: Run containers in detached mode
-        run: docker compose -f docker-compose.yml --env-file .env.dev up -d
+        run: docker compose -f docker-compose.yml --env-file .env.prod up -d
 
   #     #- name: Wait for services to be ready
   #     #  run: sleep 20
