@@ -1,5 +1,5 @@
 // src/config/services.js
-const ENV_SERVER =
+export const ENV_SERVER =
   // import.meta.env?.VITE_ENV_SERVER ||
   // process.env?.VITE_ENV_SERVER ||
   "prod";
