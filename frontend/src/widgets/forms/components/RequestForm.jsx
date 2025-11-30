@@ -5,10 +5,10 @@ export default function RequestForm({ title, inputList, formObject, handleChange
   const { t } = useTranslation();
 
   return (
-    <form onSubmit={onSubmit} className="full-view column-left gap20 editForm">
+    <form onSubmit={onSubmit} className="full-view column-left gap30 requestForm">
       <p className="h3 full-w">{title}</p>
 
-      <div className="full-view column-left gap10">
+      <div className="full-view column-left gap20">
         {inputList.map(({ label, valueKey, validations }) => (
           <CustomInput
             key={valueKey}

@@ -17,6 +17,7 @@ export default function Table({
   onRowClick,        // click en fila no seleccionada
   onSelectedClick,   // click en fila ya seleccionada
   onDeselect,        // click fuera de la tabla
+  onRowRightClick,
   striped = true,
   className = "",
 }) {
@@ -25,19 +26,23 @@ export default function Table({
   const [sortConfig, setSortConfig] = useState(initialSort);
   const [selectedKey, setSelectedKey] = useState(null);
 
-  // 🔹 Cerrar selección (y menú) al hacer click FUERA de la tabla
   useEffect(() => {
     const handleClickOutside = (e) => {
-      if (!tableRef.current) return;
-      if (!tableRef.current.contains(e.target)) {
-        setSelectedKey(null);
-        onDeselect?.();
-      }
+    if (!tableRef.current) return;
+  
+    if (e.target.closest(".floating-row-menu")) {
+      return;
+    }
+
+    if (!tableRef.current.contains(e.target)) {
+      setSelectedKey(null);
+      onDeselect?.();
+    }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () =>
-      document.removeEventListener("mousedown", handleClickOutside);
+    document.removeEventListener("mousedown", handleClickOutside);
   }, [onDeselect]);
 
   const requestSort = (key, sortable) => {
@@ -98,7 +103,7 @@ export default function Table({
   if (!data.length) {
     return (
       <div className={`full-view flex-center ${className}`}>
-        <p className="empty-table-message h4">
+        <p className="empty-table-message h5">
           {t("noResultMessage")}
         </p>
       </div>
@@ -162,6 +167,10 @@ export default function Table({
                 // 👇 doble click NO hace nada especial
                 onDoubleClick={(e) => {
                   e.stopPropagation();
+                }}
+                onContextMenu={(e) => {
+                  e.preventDefault();
+                  onRowRightClick?.(row, e);
                 }}
                 style={{
                   cursor:

@@ -13,6 +13,7 @@ export function TableCRUD({
   initialData = [],
   buttonName = "add",
   onRowClick,
+  onRowRightClick,
   onSelectedClick,
   onDeselect,
 }) {
@@ -47,6 +48,7 @@ export function TableCRUD({
         data={data}
         columns={columns.filter(Boolean)}
         onRowClick={onRowClick}
+        onRowRightClick={onRowRightClick}
         onSelectedClick={onSelectedClick}
         onDeselect={onDeselect}
       />

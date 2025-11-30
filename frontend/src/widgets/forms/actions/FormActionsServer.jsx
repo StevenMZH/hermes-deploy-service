@@ -3,7 +3,7 @@ import ActionsForm from "../components/ActionsForm.jsx";
 import { useDeleteServer } from "../../../features/deployments/servers/hooks";
 
 export default function FormActionsServer({ onRequestClose }) {
-  const { formObject, setAdvancedForm } = useAppState();
+  const { formObject, setAdvancedForm, setOpenTerminal } = useAppState();
   const deleteServer = useDeleteServer();
 
   const handleDelete = () => {
@@ -37,8 +37,11 @@ export default function FormActionsServer({ onRequestClose }) {
       color: "",
     },
     {
-      label: "terminal",
-      onClick: () => setAdvancedForm("editServer", formObject),
+      label: "openTerminal",
+      onClick: () => {
+        setAdvancedForm("", null),
+        setOpenTerminal(true)
+      },
       icon: "terminal.png",
       color: "green",
     },

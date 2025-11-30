@@ -119,7 +119,7 @@ function getColumns(isMobile, t, hiddenRows, setHiddenRows) {
 
 export function ServersPage() {
   const { t } = useTranslation();
-  const { isMobile, setAdvancedForm, setSelectedServer } = useAppState();
+  const { isMobile, setAdvancedForm, setSelectedServer, setOpenTerminal } = useAppState();
   const { data: servers = [] } = useServers();
   const deleteServer = useDeleteServer();
 
@@ -129,10 +129,17 @@ export function ServersPage() {
 
   const desktopMenuActions = [
     {
+      label: t("openTerminal"),
+      onClick: (row) => {
+        setAdvancedForm("", null),
+        setOpenTerminal(true)
+      },
+    },
+    {
       label: t("edit"),
       onClick: (row) => {
         setSelectedServer(row);
-        setAdvancedForm("actionsServer", row);
+        setAdvancedForm("editServer", row);
       },
     },
     {

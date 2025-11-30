@@ -37,7 +37,7 @@ export default function FormActionsImage({ onRequestClose }) {
       color: "",
     },
     {
-      label: "build",
+      label: "buildImage",
       onClick: () => setAdvancedForm("editImage", formObject),
       icon: "deploy/docker.svg",
       color: "",

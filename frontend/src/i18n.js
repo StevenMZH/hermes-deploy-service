@@ -33,6 +33,7 @@ i18n
           port: "Port",
           project: "Project",
           projectId: "Project ID",
+          settings: "Settings",
 
           // Image Pages
           version: "Version",
@@ -60,12 +61,15 @@ i18n
           buildImage: "Build Image",
           terminal: "Terminal",
           selectServerMessage: "Select a server to connect",
+          openTerminal: "Open terminal",
 
           // Forms
           addServer: "Add Server",
           addImage: "Add Image",
           addRepo: "Add Repository",
           createApp: "Create App",
+          actionFormTitle: "Select an Action",
+          required: "(required)",
 
           // Table messages
           emptyTableMessage: "No data added yet",
@@ -100,6 +104,7 @@ i18n
           port: "Puerto",
           project: "Proyecto",
           projectId: "ID del Proyecto",
+          settings: "Ajustes",
 
           // Image Pages
           version: "Versión",
@@ -127,12 +132,15 @@ i18n
           buildImage: "Construir Imagen",
           terminal: "Terminal",
           selectServerMessage: "Selecciona un server para conectarse",
+          openTerminal: "Abrir terminal",
 
           // Forms
           addServer: "Agregar Servidor",
           addImage: "Agregar Imagen",
           addRepo: "Agregar Repositorio",
           createApp: "Crear Aplicación",
+          actionFormTitle: "Selecciona una Acción",
+          required: "(requerido)",
 
           // Table messages
           emptyTableMessage: "Aún no se han agregado datos",

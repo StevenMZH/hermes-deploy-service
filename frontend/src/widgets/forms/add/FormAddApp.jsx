@@ -41,7 +41,7 @@ export function FormAddApp({ onRequestClose }) {
 
   return (
     <RequestForm
-      title={t("addApp")}
+      title={t("createApp")}
       button_str={t("submit")}
       inputList={inputList}
       formObject={app}

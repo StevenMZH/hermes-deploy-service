@@ -29,7 +29,7 @@
 .form-container.card {
   position: fixed;
   max-width: 70%;
-  height: 70%;
+  height: 80%;
   padding: 50px 40px;
   animation: slideUp 0.3s ease-out;
   z-index: 200;
@@ -127,7 +127,7 @@
   margin-left: 4px;
 }
 .requiredText {
-  margin-left: 2px;
+  margin-left: 5px;
   color: #ff6f6f;
   font-size: 10px;
   font-weight: 500;
@@ -147,18 +147,19 @@
 }
 
 .customField-label {
-  font-weight: 500;
+  font-weight: 400;
   /* color: #333; */
-  font-size: 14px;
+  /* font-size: 14px; */
+  /* margin-left: 5px; */
 }
 
 .customInput,
 .customSelect {
   text-align: left;
-  padding: 10px 12px;
+  padding: 10px 15px;
   /* border: 1px solid #ccc; */
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   outline: none;
   transition: border-color 0.2s ease;
@@ -230,8 +231,8 @@
   }
 
   .long-form .form-container.card {
-    height: 70%;
-    max-height: 70%;
+    height: 80%;
+    max-height: 80%;
   }
   .short-form .form-container.card {
     padding: 20px;
@@ -248,4 +249,7 @@
     animation: slideDown .15s ease-in forwards;    
   }
 
+  .form-container:has(.requestForm, .editForm) {
+    padding: 50px 30px;
+  }
 }

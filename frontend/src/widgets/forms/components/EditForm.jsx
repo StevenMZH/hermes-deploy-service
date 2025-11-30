@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import CustomInput from "./CustomInput.jsx";
 import { useAppState } from "../../../context/AppStateContext.jsx";
 
-export default function EditForm({ title, inputList, onSubmit, onDelete, onRequestClose }) {
+export default function EditForm({ title, inputList, onSubmit, onRequestClose }) {
   const { t } = useTranslation();
   const { formObject, setFormObject } = useAppState();
 
@@ -41,9 +41,6 @@ export default function EditForm({ title, inputList, onSubmit, onDelete, onReque
       </div>
 
       <div className="full-w row-right gap10">
-        <button type="button" className="hl1 h5 off" onClick={onDeleteFlow}>
-          {t("delete")}
-        </button>
         <button type="submit" className="hl1 h5">
           {t("update")}
         </button>

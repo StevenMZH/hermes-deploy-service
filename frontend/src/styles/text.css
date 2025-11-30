@@ -76,6 +76,17 @@
     font-weight: 400;
 }
 
+.t-body4 {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.t-body5 {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+
 @media (max-width: 768px) {
     div .h1 {
         /* font-size: 32px; */

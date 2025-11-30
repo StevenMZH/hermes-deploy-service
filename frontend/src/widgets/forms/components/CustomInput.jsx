@@ -14,12 +14,11 @@ export function CustomInput({
   const { t } = useTranslation();
   
   return (
-    <div className={`customField ${className}`}>
+    <div className={`customField gap5 ${className}`}>
       {label && (
-        <label className={`customField-label row-left ${labelClassName}`}>
+        <label className={`customField-label row-left t-body5 ${labelClassName}`}>
           {label}
-          {validations.required && <span className="requiredMark">*  </span>}
-          {validations.required && <span className="requiredText">({t("required")})</span>}
+          {validations.required && <span className="requiredText">{t("required")}</span>}
         </label>
       )}
       <input
@@ -28,7 +27,7 @@ export function CustomInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         {...validations} // <-- aplica todas las validaciones del input
-        className={`customInput ${fieldClassName}`}
+        className={`customInput t-body4 ${fieldClassName}`}
       />
     </div>
   );

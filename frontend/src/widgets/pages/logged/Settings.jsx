@@ -19,7 +19,7 @@ export function Settings() {
 
   return (
     <div className="full-view flex column-left gap20">
-      <p className="h3">Settings</p>
+      <p className="h3">{t("settings")}</p>
     
       {/* <div className="card gap10">
       </div> */}

@@ -64,7 +64,7 @@ export function useXterm(containerRef, { enabled, serverId, serverName }) {
     };
     window.addEventListener("resize", handleResize);
 
-    const wsUrl = `ws${ENV_SERVER == "local" ? "" : "s"}://${DEPLOY_API_DOMAIN}/ws/shell/${serverId}/`;
+    const wsUrl = `ws${ENV_SERVER == "local" ? "" : "s"}://${ENV_SERVER == "local" ? "127.0.0.1:8000" : DEPLOY_API_DOMAIN}/ws/shell/${serverId}/`;
     const socket = new WebSocket(wsUrl);
 
     socket.onopen = () => {
@@ -110,10 +110,18 @@ export function useXterm(containerRef, { enabled, serverId, serverName }) {
 
 
 export default function Shell() {
-  const [open, setOpen] = useState(false);
+  const { openTerminal, setOpenTerminal } = useAppState();
+  const [open, setOpen] = useState(openTerminal);
   const container = useRef(null);
   const { selectedServer } = useAppState();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    if(openTerminal){
+      setOpen(true);
+      setOpenTerminal(false);
+    }
+  }, [openTerminal]);
 
   useEffect(() => {
     const handleKey = (e) => {
@@ -128,7 +136,7 @@ export default function Shell() {
   }, []);
 
   useXterm(container, {
-    enabled: !!selectedServer,             // 👈 conexión ligada al server, no al panel
+    enabled: !!selectedServer,            
     serverId: selectedServer?.id,
     serverName: selectedServer?.name,
   });

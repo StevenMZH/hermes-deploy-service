@@ -39,7 +39,7 @@ export function FormAddRepo({ onRequestClose }) {
 
   return (
     <RequestForm
-      title={t("addRepository")}
+      title={t("addRepo")}
       button_str={t("submit")}
       inputList={inputList}
       formObject={repo}

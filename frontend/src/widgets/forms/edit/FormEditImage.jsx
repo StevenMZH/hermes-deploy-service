@@ -2,7 +2,6 @@
 import { useAppState } from "../../../context/AppStateContext.jsx";
 import {
   useUpdateImage,
-  useDeleteImage,
 } from "../../../features/deployments/images/hooks.js";
 import EditForm from "../components/EditForm.jsx";
 
@@ -10,7 +9,6 @@ export default function FormEditImage({ onRequestClose }) {
   const { formObject } = useAppState();
 
   const updateImage = useUpdateImage();
-  const deleteImage = useDeleteImage();
 
   const inputList = [
     { label: "name", valueKey: "name" },
@@ -36,28 +34,11 @@ export default function FormEditImage({ onRequestClose }) {
     );
   };
 
-  const deleteImageFn = () => {
-    if (!formObject?.id) return;
-
-    deleteImage.mutate(
-      { pathParams: { id: formObject.id } },
-      {
-        onSuccess: () => {
-          onRequestClose?.();
-        },
-        onError: (err) => {
-          console.error("Delete image failed:", err);
-        },
-      }
-    );
-  };
-
   return (
     <EditForm
       title="image"
       inputList={inputList}
       onSubmit={handleSubmit}
-      onDelete={deleteImageFn}
       onRequestClose={onRequestClose}
     />
   );

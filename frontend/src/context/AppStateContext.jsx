@@ -11,6 +11,7 @@ export function AppStateProvider({ children }) {
   const [formObject, setFormObject] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [selectedServer, setSelectedServer] = useState(null);
+  const [openTerminal, setOpenTerminal] = useState(false);
 
   const setForm = (newForm) => {
     _setForm(newForm);
@@ -44,6 +45,8 @@ export function AppStateProvider({ children }) {
         setAdvancedForm,  // ← setAdvancedForm controla ambos
         selectedServer,
         setSelectedServer,
+        openTerminal,
+        setOpenTerminal
       }}
     >
       {children}

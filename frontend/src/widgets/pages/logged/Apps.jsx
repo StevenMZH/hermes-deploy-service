@@ -1,9 +1,7 @@
 // src/widgets/pages/logged/Apps.jsx
 import { useTranslation } from "react-i18next";
-import {
-  useApps,
-  useDeleteApp,
-} from "../../../features/deployments/apps/hooks";
+import { useApps, useDeleteApp } from "../../../features/deployments/apps/hooks";
+// import AppStatusCell from "../../components/table/AppStatusCell";
 import { useAppState } from "../../../context/AppStateContext";
 import ResponsiveTable from "../../components/table/ResponsiveTable";
 
@@ -20,21 +18,23 @@ export function AppsPage() {
 
   const deleteApp = useDeleteApp();
 
-  const statusCell = {
-    key: "status",
-    header: "",
-    sortable: false,
-    cell: (row) => (
-      <div className="full-w flex-center">
-        <div
-          className={`center server-status ${
-            row.status === "on" ? "on" : "off"
-          }`}
-        ></div>
-      </div>
-    ),
-    width: "50px",
-  };
+  // const statusCell = {
+  //   key: "status",
+  //   header: "",
+  //   sortable: false,
+  //   cell: (row) => (
+  //     <div className="full-w flex-center">
+  //       <div
+  //         className={`center server-status ${
+  //           row.status === "on" ? "on" : "off"
+  //         }`}
+  //       ></div>
+  //     </div>
+  //   ),
+  //   cell: (row) => <AppStatusCell id={row.id} />,
+  //   width: "50px",
+  // };
+
 
   const locationsCell = {
     key: "locations",
@@ -51,7 +51,7 @@ export function AppsPage() {
   };
 
   const columns = [
-    statusCell,
+    // statusCell,
     {
       key: "name",
       header: t("name"),

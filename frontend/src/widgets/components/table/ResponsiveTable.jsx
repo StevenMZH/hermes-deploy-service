@@ -17,6 +17,7 @@ export default function ResponsiveTable({
   desktopOnClick,          // 👈 NEW
   desktopMenuTitle,
   desktopMenuActions = [],
+  desktopOnRightClick,
 }) {
   const { isMobile } = useAppState();
 
@@ -75,6 +76,13 @@ export default function ResponsiveTable({
     });
   };
 
+  const handleRightClick = (row, event) => {
+    if (isMobile) return;
+    event.preventDefault(); // quita menú del navegador
+    desktopOnRightClick?.(row, event);
+    handleSelectedClick(row, event);
+  };
+
   return (
     <div className="full-view column-left" style={{ position: "relative" }}>
       <TableCRUD
@@ -88,6 +96,7 @@ export default function ResponsiveTable({
         onRowClick={handleRowClick}
         onSelectedClick={handleSelectedClick}
         onDeselect={closeMenu}
+        onRowRightClick={handleRightClick}
       />
 
       {!isMobile &&
