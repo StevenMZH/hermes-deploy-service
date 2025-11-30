@@ -11,8 +11,8 @@ export default function FormEditRepo({ onRequestClose }) {
   const updateRepo = useUpdateRepo();
 
   const inputList = [
-    { label: "name", valueKey: "name" },
-    { label: "url", valueKey: "url" },
+    { label: "name", valueKey: "name", validations: { required: true, minLength: 3 } },
+    { label: "url", valueKey: "url", validations: { required: true, type: "url" } },
   ];
 
   const handleSubmit = () => {

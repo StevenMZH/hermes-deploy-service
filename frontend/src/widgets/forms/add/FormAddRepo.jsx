@@ -21,8 +21,7 @@ export function FormAddRepo({ onRequestClose }) {
     setRepo(updated);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     createRepo.mutate(
       { req: repo.toAddPayload() },
       {

@@ -34,15 +34,26 @@ export function AppStateProvider({ children }) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === "Escape") {
+        setForm("");
+      }
+    };
+
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
+
   return (
     <AppStateContext.Provider
       value={{
         form,
         formObject,
         isMobile,
-        setForm, 
-        setFormObject,         // ← setForm limpia object
-        setAdvancedForm,  // ← setAdvancedForm controla ambos
+        setForm,
+        setFormObject,
+        setAdvancedForm,
         selectedServer,
         setSelectedServer,
         openTerminal,

@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useRef } from "react";
 import CustomInput from "../components/CustomInput.jsx";
 
 export default function RequestForm({
@@ -7,25 +8,45 @@ export default function RequestForm({
   formObject,
   handleChange,
   onSubmit,
-  button_str
+  button_str,
 }) {
   const { t } = useTranslation();
+  const inputRefs = useRef([]);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // El padre NO recibe el evento, solo dispara su lógica
+    onSubmit?.();
+  };
+
+  const handleKeyDown = (e, index) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+
+      const nextIndex = index + 1;
+      const nextInput = inputRefs.current[nextIndex];
+
+      if (nextInput) {
+        nextInput.focus();
+        if (typeof nextInput.select === "function") {
+          nextInput.select();
+        }
+      } else {
+        // último input → submit del form
+        handleFormSubmit(e);
+      }
+    }
+  };
 
   return (
     <form
-      onSubmit={onSubmit}
+      onSubmit={handleFormSubmit}
       className="full-view column-left gap30 requestForm"
-      onKeyDown={(e) => {
-        if (e.key === "Enter") {
-          e.preventDefault();   
-          onSubmit(e);            
-        }
-      }}
     >
       <p className="h3 full-w">{title}</p>
 
       <div className="full-view column-left gap20">
-        {inputList.map(({ label, valueKey, validations }) => (
+        {inputList.map(({ label, valueKey, validations }, index) => (
           <CustomInput
             key={valueKey}
             label={t(label)}
@@ -33,6 +54,10 @@ export default function RequestForm({
             value={formObject?.[valueKey] || ""}
             onChange={(v) => handleChange(valueKey, v)}
             validations={validations}
+            ref={(el) => {
+              inputRefs.current[index] = el;
+            }}
+            onKeyDown={(e) => handleKeyDown(e, index)}
           />
         ))}
       </div>

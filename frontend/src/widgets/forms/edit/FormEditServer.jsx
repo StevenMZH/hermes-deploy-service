@@ -8,11 +8,11 @@ export default function FormEditServer({ onRequestClose }) {
   const updateServer = useUpdateServer();
 
   const inputList = [
-    { label: "name", valueKey: "name" },
-    { label: "ipAddress", valueKey: "ip" },
-    { label: "region", valueKey: "region" },
-    { label: "email", valueKey: "email" },
-    { label: "projectId", valueKey: "project" },
+    { label: "name", valueKey: "name", validations: { required: true, minLength: 3 } },
+    { label: "ipAddress", valueKey: "ip", validations: { required: true, pattern: "\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b" } },
+    { label: "region", valueKey: "region", validations: { required: true } },
+    { label: "email", valueKey: "email", validations: { type: "email", required: true } },
+    { label: "projectId", valueKey: "project", validations: { required: true } },
   ];
 
   const handleSubmit = () => {

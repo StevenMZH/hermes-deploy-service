@@ -11,11 +11,10 @@ export default function FormEditApp({ onRequestClose }) {
   const updateApp = useUpdateApp();
 
   const inputList = [
-    { label: "name", valueKey: "name" },
-    { label: "domain", valueKey: "domain" },
-    { label: "server", valueKey: "locations.server" },
-    { label: "port", valueKey: "locations.port" },
-    { label: "image", valueKey: "image" },
+    { label: "name", valueKey: "name", validations: { required: true, minLength: 3 } },
+    { label: "domain", valueKey: "domain", validations: { required: true } },
+    { label: "image", valueKey: "image", validations: { required: true } },
+    // locations las podríamos manejar más adelante con UI dedicada
   ];
 
   const handleSubmit = () => {

@@ -24,8 +24,7 @@ export function FormAddServer({ onRequestClose }) {
     setServer(updated);                                // actualizar estado
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     createServer.mutate(
   { req: server.toAddPayload() }, // o toEditPayload()
   {

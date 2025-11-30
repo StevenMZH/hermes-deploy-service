@@ -11,11 +11,11 @@ export default function FormEditImage({ onRequestClose }) {
   const updateImage = useUpdateImage();
 
   const inputList = [
-    { label: "name", valueKey: "name" },
-    { label: "version", valueKey: "version" },
-    { label: "url", valueKey: "url" },
-    { label: "repository", valueKey: "repository" },
-    { label: "branch", valueKey: "branch"},
+    { label: "name", valueKey: "name", validations: { required: true, minLength: 3 } },
+    { label: "version", valueKey: "version", validations: { required: false } },
+    { label: "url", valueKey: "url", validations: { required: true, type: "url" } },
+    { label: "repository", valueKey: "repository", validations: { required: false } },
+    { label: "branch", valueKey: "branch", validations: { required: false } },
   ];
 
   const handleSubmit = () => {

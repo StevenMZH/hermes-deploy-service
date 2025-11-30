@@ -23,8 +23,7 @@ export function FormAddApp({ onRequestClose }) {
     setApp(updated);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     createApp.mutate(
       { req: app.toAddPayload() },
       {

@@ -12,7 +12,7 @@ export function FormAddImage({ onRequestClose }) {
 
   const inputList = [
     { label: "name", valueKey: "name", validations: { required: true, minLength: 3 } },
-    { label: "version", valueKey: "branch", validations: { required: false } },
+    { label: "version", valueKey: "version", validations: { required: false } },
     { label: "url", valueKey: "url", validations: { required: true, type: "url" } },
     { label: "repository", valueKey: "repository", validations: { required: false } },
     { label: "branch", valueKey: "branch", validations: { required: false } },
@@ -24,8 +24,7 @@ export function FormAddImage({ onRequestClose }) {
     setImage(updated);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     createImage.mutate(
       { req: image.toAddPayload() },
       {
