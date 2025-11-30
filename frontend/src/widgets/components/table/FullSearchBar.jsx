@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, useRef } from "react";
 import { useAppState } from "../../../context/AppStateContext";
 import { useTranslation } from "react-i18next";
 import CustomSelect from "../../forms/components/CustomSelect";
@@ -22,11 +22,16 @@ export default function FullSearchBar({
   initialQuery = "",
   filters = false,
   buttonName = "add",
+
+  enableCtrlF = false,
 }) {
   const { t } = useTranslation();
   const { setForm } = useAppState();
+
   const [query, setQuery] = useState(initialQuery);
   const debouncedQuery = useDebounce(query, 250);
+
+  const inputRef = useRef(null); 
 
   const current = useMemo(() => {
     const found = options.find((o) => o.value === selectedOption);
@@ -41,6 +46,7 @@ export default function FullSearchBar({
   const rowMatches = (row, q) => {
     if (!q) return true;
     const needle = q.toLowerCase();
+
     for (const key of searchKeys) {
       const val = row?.[key];
       if (val != null && String(val).toLowerCase().includes(needle)) return true;
@@ -57,13 +63,12 @@ export default function FullSearchBar({
     const full = Array.isArray(current.data) ? current.data : [];
     const next = q ? full.filter((row) => rowMatches(row, q)) : full;
 
-    // 👇 importante: solo actualizar si realmente cambia el contenido
     setData((prev) => {
       if (
         prev.length === next.length &&
         prev.every((row, i) => row === next[i])
       ) {
-        return prev; // evita re-render → evita loop
+        return prev;
       }
       return next;
     });
@@ -71,10 +76,28 @@ export default function FullSearchBar({
 
   useEffect(() => {
     applyFilter(debouncedQuery);
-  }, [debouncedQuery, current]); // está bien que cambie: si el contenido es el mismo, setData no hará nada
+  }, [debouncedQuery, current]);
 
   const handleOptionChange = (val) => onChangeOption?.(val);
+
   const handleAdd = () => current?.addFormName && setForm(current.addFormName);
+
+  useEffect(() => {
+    if (!enableCtrlF) return; 
+
+    const handler = (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "f") {
+        e.preventDefault();
+        if (inputRef.current) {
+          inputRef.current.focus();
+          inputRef.current.select();
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [enableCtrlF]);
 
   return (
     <div className="full-view flex row gap10">
@@ -96,6 +119,7 @@ export default function FullSearchBar({
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && applyFilter(query)}
+          ref={inputRef}
         />
         <button className="searchbar-button" onClick={() => applyFilter(query)}>
           <img src="./search.png" alt="" className="icon" />
@@ -108,6 +132,7 @@ export default function FullSearchBar({
           <p>Filters</p>
         </button>
       )}
+
       {current?.addFormName && (
         <button className="searchbar-add row center" onClick={handleAdd}>
           <img src="./add.png" alt="add" className="reversed-icon" />

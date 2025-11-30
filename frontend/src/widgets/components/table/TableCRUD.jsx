@@ -42,6 +42,7 @@ export function TableCRUD({
         options={options}
         setData={setData}
         buttonName={buttonName}
+        enableCtrlF={true}
       />
 
       <Table
