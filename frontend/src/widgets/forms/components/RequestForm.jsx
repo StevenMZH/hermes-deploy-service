@@ -17,8 +17,8 @@ export default function RequestForm({
       className="full-view column-left gap30 requestForm"
       onKeyDown={(e) => {
         if (e.key === "Enter") {
-          e.preventDefault();      // evita refresh / submit doble
-          onSubmit(e);             // ejecuta el submit manualmente
+          e.preventDefault();   
+          onSubmit(e);            
         }
       }}
     >
