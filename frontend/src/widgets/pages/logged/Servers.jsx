@@ -37,7 +37,7 @@ function ToggleIcon({ row, hiddenRows, setHiddenRows }) {
       onDoubleClick={handleDoubleClick}
     >
       <img
-        src={active ? "/eye.svg" : "/eye-slash.svg"}
+        src={active ? "tables/eye.svg" : "tables/eye-slash.svg"}
         alt="toggle"
         className="see-button icon"
       />

@@ -27,19 +27,19 @@ export default function FormActionsApp({ onRequestClose }) {
     {
       label: "delete",
       onClick: handleDelete,
-      icon: "delete2.png",
+      icon: "actions/delete.svg",
       color: "",
     },
     {
       label: "edit",
       onClick: () => setAdvancedForm("editApp", formObject),
-      icon: "edit.png",
+      icon: "actions/edit.svg",
       color: "",
     },
     {
       label: "deploy",
       onClick: handleDelete,
-      icon: "cloud.png",
+      icon: "actions/deploy.svg",
       color: "",
     },
   ];

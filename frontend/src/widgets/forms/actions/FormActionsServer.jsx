@@ -27,13 +27,13 @@ export default function FormActionsServer({ onRequestClose }) {
     {
       label: "delete",
       onClick: handleDelete,
-      icon: "delete2.png",
+      icon: "actions/delete.svg",
       color: "",
     },
     {
       label: "edit",
       onClick: () => setAdvancedForm("editServer", formObject),
-      icon: "edit.png",
+      icon: "actions/edit.svg",
       color: "",
     },
     {
@@ -42,7 +42,7 @@ export default function FormActionsServer({ onRequestClose }) {
         setAdvancedForm("", null),
         setOpenTerminal(true)
       },
-      icon: "terminal.png",
+      icon: "actions/terminal.svg",
       color: "green",
     },
   ];

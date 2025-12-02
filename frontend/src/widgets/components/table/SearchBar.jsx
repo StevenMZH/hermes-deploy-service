@@ -11,7 +11,7 @@ export function Searchbar() {
     <div className="full-view searchbar">
         <input type="text" className="searchbar-input" placeholder="Search"/>
         <button className="searchbar-button">
-            <img src="./search.png" alt="" className="icon"/>
+            <img src="actions/search.svg" alt="" className="icon"/>
         </button>
     </div>
   );

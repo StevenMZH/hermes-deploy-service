@@ -14,6 +14,8 @@ services:
       - postgres
       - redis
     restart: always
+    volumes:
+      - ~/.hermes_client/.ssh:/root/.hermes_client/.ssh
     networks:
       - nginx-proxy-net
 

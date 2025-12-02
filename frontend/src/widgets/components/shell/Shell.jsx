@@ -152,7 +152,7 @@ export default function Shell() {
           Terminal {selectedServer?.name && `(${selectedServer.name})`}
         </p>
         <img
-          src={open ? "arrow-down.png" : "arrow-up.png"}
+          src={open ? "actions/arrow-down.svg" : "actions/arrow-up.svg"}
           alt="toggle terminal"
           className="icon"
         />

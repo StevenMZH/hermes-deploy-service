@@ -7,7 +7,7 @@ export function Header() {
         <>
             <div className="full-w row-left gap">
                 {/* <img src="/deploy/docker.svg" alt="Logo" className="logo icon"/> */}
-                <img src="/logo2.svg" alt="Logo" className="logo icon"/>
+                <img src="logo2.svg" alt="Logo" className="logo icon"/>
                 <div className="column-left">
                     <h1 className="h1">HERMES</h1>            
                     <p className="h1-sec">S E R V I C E S</p>            

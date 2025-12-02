@@ -27,13 +27,13 @@ export default function FormActionsRepo({ onRequestClose }) {
     {
       label: "delete",
       onClick: handleDelete,
-      icon: "delete2.png",
+      icon: "actions/delete.svg",
       color: ""
     },
     {
       label: "edit",
       onClick: () => setAdvancedForm("editRepo", formObject),
-      icon: "edit.png",
+      icon: "actions/edit.svg",
       color: ""
     },
   ];

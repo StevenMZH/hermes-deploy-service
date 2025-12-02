@@ -122,20 +122,20 @@ export default function FullSearchBar({
           ref={inputRef}
         />
         <button className="searchbar-button" onClick={() => applyFilter(query)}>
-          <img src="./search.png" alt="" className="icon" />
+          <img src="actions/search.svg" alt="" className="icon" />
         </button>
       </div>
 
       {filters && (
         <button className="searchbar-filter row center">
-          <img src="./filter.png" alt="filter" className="icon" />
+          <img src="actions/filter.svg" alt="filter" className="icon" />
           <p>Filters</p>
         </button>
       )}
 
       {current?.addFormName && (
         <button className="searchbar-add row center" onClick={handleAdd}>
-          <img src="./add.png" alt="add" className="reversed-icon" />
+          <img src="actions/add.svg" alt="add" className="reversed-icon" />
           <p>{t(buttonName)}</p>
         </button>
       )}

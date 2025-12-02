@@ -82,8 +82,8 @@ export default function Table({
       <img
         src={
           direction === "asc"
-            ? "/livestock_table/up.svg"
-            : "/livestock_table/down.svg"
+            ? "tables/up.svg"
+            : "tables/down.svg"
         }
         alt={direction === "asc" ? "ascending" : "descending"}
         className="sort-icon"
@@ -199,7 +199,7 @@ export default function Table({
                     rawValue === "" ? (
                       <img
                         alt="no value"
-                        src="line.png"
+                        src="tables/line.svg"
                         className="table-null icon"
                       />
                     ) : (

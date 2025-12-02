@@ -27,19 +27,19 @@ export default function FormActionsImage({ onRequestClose }) {
     {
       label: "delete",
       onClick: handleDelete,
-      icon: "delete2.png",
+      icon: "actions/delete.svg",
       color: "",
     },
     {
       label: "edit",
       onClick: () => setAdvancedForm("editImage", formObject),
-      icon: "edit.png",
+      icon: "actions/edit.svg",
       color: "",
     },
     {
       label: "buildImage",
       onClick: () => setAdvancedForm("editImage", formObject),
-      icon: "deploy/docker.svg",
+      icon: "nav/images.svg",
       color: "",
     },
 
