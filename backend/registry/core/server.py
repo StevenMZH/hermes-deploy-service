@@ -1,4 +1,5 @@
 from hermes.core.models import Server as HermesServer
+from hermes.internal.keys import set_keys, sshKey_path
 from hermes.internal.setup import set_client, set_server
 from hermes.internal.funcs import run_serverside
 from hermes.services.connect import set_connection, access_server
@@ -25,8 +26,19 @@ def set_server_conection(db_server: DbServer):
         events=None
     )
     set_client()
-    set_server(h_server)
-    set_connection(h_server.vm_name, h_server, db_server.region)
+    # set_server(h_server)
+    set_keys(h_server.vm_name)    
+    
+    key_path = sshKey_path(h_server.vm_name)        
+    pub_path = f"{key_path}.pub"                    
+    with open(pub_path, "r") as f:
+        pub_key = f.read().strip()
+
+    pub_key_safe = pub_key.replace("'", "'\"'\"'")
+
+    cmds = f"echo '# Hermes Services' >> ~/.ssh/authorized_keys && echo '{pub_key_safe}' >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"    
+    return cmds
+
     # reverse-proxy deploy
 
 

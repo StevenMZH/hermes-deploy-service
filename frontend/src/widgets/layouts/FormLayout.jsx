@@ -16,6 +16,9 @@ import FormActionsImage from "../forms/actions/FormActionsImage";
 import FormActionsRepo from "../forms/actions/FormActionsRepo";
 import FormActionsApp from "../forms/actions/FormActionsApp";
 
+import SshCmd from "../forms/actions/sshCmd";
+
+
 // Ahora cada entrada es { form: JSX, type: string }
 const formSelected = {
   addServer:   { form: <FormAddServer />,   type: "long-form" },
@@ -32,6 +35,8 @@ const formSelected = {
   actionsImage:  { form: <FormActionsImage />,  type: "short-form" },
   actionsRepo:   { form: <FormActionsRepo />,   type: "short-form" },
   actionsApp:    { form: <FormActionsApp />,    type: "short-form" },
+
+  sshCmd:    { form: <SshCmd/>,    type: "ssh-form" },
 };
 
 export function FormLayout() {

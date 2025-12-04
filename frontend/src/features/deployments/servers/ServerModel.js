@@ -7,7 +7,7 @@ class ServerModel {
     email: "",
     project: "",
     region: "",
-    ssh_key: "",
+    setup_cmd: "",
     // status: "",  // si luego usas ServerStatus
   };
 
@@ -20,7 +20,7 @@ class ServerModel {
     this.#data.email = initialData.email ?? this.#data.email;
     this.#data.project = initialData.project ?? this.#data.project;
     this.#data.region = initialData.region ?? this.#data.region;
-    this.#data.ssh_key = initialData.ssh_key ?? this.#data.ssh_key;
+    this.#data.setup_cmd = initialData.setup_cmd ?? this.#data.setup_cmd;
   }
   // Getters
   get id() { return this.#data.id; }
@@ -29,7 +29,7 @@ class ServerModel {
   get email() { return this.#data.email; }
   get project() { return this.#data.project; }
   get region() { return this.#data.region; }
-  get ssh_key() { return this.#data.ssh_key; }
+  get setup_cmd() { return this.#data.setup_cmd; }
 
   // Setters
   set id(v) { this.#data.id = v; }
@@ -38,7 +38,7 @@ class ServerModel {
   set email(v) { this.#data.email = v; }
   set project(v) { this.#data.project = v; }
   set region(v) { this.#data.region = v; }
-  set ssh_key(v) { this.#data.ssh_key = v; }
+  set setup_cmd(v) { this.#data.setup_cmd = v; }
 
   // Serialización
   toJSON() {
@@ -49,7 +49,7 @@ class ServerModel {
       email: this.#data.email,
       project: this.#data.project,
       region: this.#data.region,
-      // ssh_key: this.#data.ssh_key,
+      // setup_cmd: this.#data.setup_cmd,
     };
   }
 
@@ -60,7 +60,7 @@ class ServerModel {
       email: this.#data.email,
       project: this.#data.project,
       region: this.#data.region,
-      ssh_key: this.#data.ssh_key,
+      setup_cmd: this.#data.setup_cmd,
     };
   }
 
@@ -71,7 +71,7 @@ class ServerModel {
     if (this.#data.email) p.email = this.#data.email;
     if (this.#data.project) p.project = this.#data.project;
     if (this.#data.region) p.region = this.#data.region;
-    if (this.#data.ssh_key) p.ssh_key = this.#data.ssh_key;
+    if (this.#data.setup_cmd) p.setup_cmd = this.#data.setup_cmd;
     return p;
   }
 
@@ -92,7 +92,7 @@ class ServerModel {
       email: obj.email ?? "",
       project: obj.project ?? "",
       region: obj.region ?? "",
-      // ssh_key: obj.ssh_key ?? "",
+      setup_cmd: obj.setup_cmd ?? "",
     });
   }
 }

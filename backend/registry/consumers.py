@@ -1,6 +1,7 @@
 import threading
 import time
 import paramiko
+import os
 
 from channels.generic.websocket import AsyncWebsocketConsumer
 from asgiref.sync import async_to_sync
@@ -19,7 +20,7 @@ class SSHConsumer(AsyncWebsocketConsumer):
         await self.accept()
         await self.send(text_data="[system] Initializing SSH connection...\r\n")
 
-        # Get server from DB
+        # 1) Obtener server
         try:
             server = await self._get_server()
         except DbServer.DoesNotExist:
@@ -27,17 +28,51 @@ class SSHConsumer(AsyncWebsocketConsumer):
             await self.close()
             return
 
+        # 2) Validar campos obligatorios
+        required_fields = {
+            "name": server.name,
+            "email": server.email,
+            "region": server.region,
+            "project": server.project,
+            "ip": server.ip,
+        }
+
+        missing = [field for field, value in required_fields.items() if not value]
+
+        if missing:
+            await self.send(
+                text_data=(
+                    "[error] Server is missing required fields: "
+                    + ", ".join(missing)
+                    + ". SSH connection disabled.\r\n"
+                )
+            )
+            await self.close()
+            return
+
         server_name = server.name or f"server-{server.pk}"
         host = server.ip
         user = self._get_ssh_user(server)
+
+        # 3) Obtener path de la key y validar que exista
         key_path = sshKey_path(server_name)
+
+        if not key_path or not os.path.exists(key_path):
+            await self.send(
+                text_data="[error] SSH key not found for this server. SSH connection disabled.\r\n"
+            )
+            await self.close()
+            return
 
         await self.send(
             text_data=f"[system] Connecting to {server_name} as {user}@{host}...\r\n"
         )
 
         try:
-            self._open_ssh(host, user, key_path)
+            if(key_path):
+                self._open_ssh(host, user, key_path)            
+            else:
+                return
         except Exception as e:
             await self.send(
                 text_data="[error] Failed to establish SSH connection.\r\n"
@@ -74,6 +109,9 @@ class SSHConsumer(AsyncWebsocketConsumer):
         return "root"
 
     def _open_ssh(self, host: str, user: str, key_path: str):
+        if(not key_path):
+            return
+        
         self.ssh_client = paramiko.SSHClient()
         self.ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 

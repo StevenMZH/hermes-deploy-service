@@ -87,7 +87,8 @@ body, main {
     padding: 0;
 }
 .page-content{
-    padding-bottom: 10px;
+    padding-bottom: 20px;
+    overflow-y: scroll;
 }
 
 
@@ -251,6 +252,7 @@ video {
     } 
     body main {
         padding: 0px 15px;
+        padding-bottom: 20px;
     }
     body header{
         padding: 15px 15px;

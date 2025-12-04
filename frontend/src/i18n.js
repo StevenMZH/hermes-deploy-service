@@ -62,6 +62,9 @@ i18n
           terminal: "Terminal",
           selectServerMessage: "Select a server to connect",
           openTerminal: "Open terminal",
+          exit: "Exit",
+          copy: "Copy",
+          copied: "Copied!",
 
           // Forms
           addServer: "Add Server",
@@ -70,6 +73,8 @@ i18n
           createApp: "Create App",
           actionFormTitle: "Select an Action",
           required: "(required)",
+          sshTitle: "To connect to your server",
+          sshDescription: "Copy and run the following command on the terminal",
 
           // Table messages
           emptyTableMessage: "No data added yet",
@@ -133,6 +138,13 @@ i18n
           terminal: "Terminal",
           selectServerMessage: "Selecciona un server para conectarse",
           openTerminal: "Abrir terminal",
+          exit: "Salir",
+          copy: "Copiar",
+          copied: "Copiado!",
+
+          sshTitle: "Para conectarse al servidor",
+          sshDescription: "Copia y corre el siguiente comando en tu terminal",
+
 
           // Forms
           addServer: "Agregar Servidor",

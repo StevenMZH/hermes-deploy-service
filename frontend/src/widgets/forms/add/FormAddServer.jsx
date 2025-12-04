@@ -3,10 +3,13 @@ import RequestForm from "../components/RequestForm.jsx";
 import { useTranslation } from "react-i18next";
 import { ServerModel } from "../../../features/deployments/servers/ServerModel.js";
 import { useCreateServer, useServers } from "../../../features/deployments/servers/hooks.js";
+import { useAppState } from "../../../context/AppStateContext.jsx";
 
 export function FormAddServer({ onRequestClose }) {
   const { t } = useTranslation();
   const [server, setServer] = useState(new ServerModel());
+  const { formObject, setAdvancedForm } = useAppState();
+
   const createServer = useCreateServer();
 
 
@@ -26,17 +29,18 @@ export function FormAddServer({ onRequestClose }) {
 
   const handleSubmit = () => {
     createServer.mutate(
-  { req: server.toAddPayload() }, // o toEditPayload()
-  {
-    onSuccess: () => {
-      setServer(new ServerModel());
-      onRequestClose?.();
-    },
-    onError: (err) => console.error(err.response?.data || err.message),
-  }
-);
-
+      { req: server.toAddPayload() },
+      {
+        onSuccess: (createdServer) => {
+          console.log("createdServer", createdServer);
+          setAdvancedForm("sshCmd", createdServer);
+          setServer(new ServerModel());
+        },
+        onError: (err) => console.error(err.response?.data || err.message),
+      }
+    );
   };
+
 
 
   return (

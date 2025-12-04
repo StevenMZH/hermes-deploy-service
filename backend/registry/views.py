@@ -4,6 +4,7 @@ from django.db.models import Prefetch
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from .core.server import is_server_up
+from rest_framework import status
 
 from .models import App, AppLocation, Image, Repo, Server
 from .serializers import (
@@ -48,9 +49,19 @@ class ServerViewSet(viewsets.ModelViewSet):
     serializer_class = ServerSerializer
     permission_classes = [DefaultAllowAny]
 
-    def perform_create(self, serializer):
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
         server = serializer.save()
-        set_server_conection(server)
+
+        setup_cmd = set_server_conection(server)
+
+        headers = self.get_success_headers(serializer.data)
+
+        data = serializer.data.copy()
+        data["setup_cmd"] = setup_cmd 
+
+        return Response(data, status=status.HTTP_201_CREATED, headers=headers)
 
     @action(detail=True, methods=["get"])
     def status(self, request, pk=None):

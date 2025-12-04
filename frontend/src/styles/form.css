@@ -98,7 +98,7 @@
   background-color: #d36985;
 }
 
-.actionsForm button {
+.actionsForm button, .sshForm button {
   background-color: var(--highlight1);
   background-color:#3a60ca;
   border-radius: 100%;
@@ -118,6 +118,16 @@
 }
 .actionsForm button.blue {
   background-color:#3a60ca;
+}
+
+.ssh-form .form-container.card {
+  padding: 20px;
+  height: 150px;
+  max-height: 150px;
+}
+.ssh-form .exit-button {
+  position: absolute;
+  top: 10px;
 }
 
 /* Fields */
@@ -239,17 +249,22 @@
     height: 200px;
     max-height: 200px;
   }
+  .ssh-form .form-container.card {
+    padding: 20px;
+    height: 150px;
+    max-height: 150px;
+  }
 
 
   .form-container.card {
     animation: slideUp 0.15s ease-out;
   }
-
   .form-layout.closing .form-container.card {
     animation: slideDown .15s ease-in forwards;    
   }
-
   .form-container:has(.requestForm, .editForm) {
     padding: 50px 30px;
   }
+
+
 }
